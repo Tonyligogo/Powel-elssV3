@@ -1,0 +1,21 @@
+.dataGrid{
+    background-color: white;
+    padding: 4px;
+    overflow-x: auto;
+}
+.dataGrid .MuiDataGrid-toolbarContainer{
+    flex-direction: row-reverse;
+}
+.MuiInputBase-input:hover,
+.MuiInputBase-input:focus{
+    outline: none !important;
+}
+.dataGrid .MuiDataGrid-cell[data-field="status"][title="Paid"]{
+    color: green;
+}
+.dataGrid .MuiDataGrid-cell[data-field="status"][title="Cancelled"]{
+    color: red;
+}
+.dataGrid .MuiDataGrid-cell[data-field="status"][title="Pending"]{
+    color: rgb(202, 202, 15);
+}
