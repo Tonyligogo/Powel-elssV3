@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 function Quotation() {
   const [tableContent, setTableContent] = useState([]);
   const [qtnType, setQtnType] = useState("");
+  console.log(qtnType)
 
   const totalAmount = tableContent.reduce((sum, item) => sum + item.amount, 0);
   const tax = totalAmount ? totalAmount * 0.1 : 0;

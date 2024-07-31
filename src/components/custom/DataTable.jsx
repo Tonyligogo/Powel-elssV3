@@ -1,10 +1,13 @@
+/* eslint-disable react/prop-types */
 import Box from '@mui/material/Box';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 import { styled } from '@mui/material/styles';
 // import DeleteDialog from '../Dialogs/DeleteDialog';
 import { useState } from 'react';
 import { Pencil, Trash2 } from 'lucide-react';
 import './DataTable.css';
+import DeleteDialog from './DeleteDialog';
+import EditDialog from './EditDialog';
 
 
 const StyledGridOverlay = styled('div')(({ theme }) => ({
@@ -81,8 +84,9 @@ function CustomNoRowsOverlay() {
 
   
 
-export default function DataTable({rows, columns, onClickDelete}) {
+export default function DataTable({rows, columns}) {
   const [deleteModal, setDeleteModal] = useState(false)
+  const [rowToEdit, setRowToEdit] = useState(null)
   const [deleteId, setDeleteId] = useState(null)
   const actionColumn = {
     field:'action',
@@ -92,21 +96,18 @@ export default function DataTable({rows, columns, onClickDelete}) {
     renderCell: (params) => {
       return (
         <div className='flex h-full items-center justify-center'>
-          <Pencil size={16} className='mr-2 cursor-pointer'/>
-          {/* <Trash2 size={16} className='cursor-pointer' onClick={()=>showDeleteModal(params.row.id)}/> */}
+          <Pencil size={16} className='mr-2 cursor-pointer' onClick={()=>setRowToEdit(params.row)}/>
+          <Trash2 size={16} className='cursor-pointer' onClick={()=>showDeleteModal(params.row.id)}/>
         </div>
       )
     }   
   }
-  const handleDelete = () => {
-    onClickDelete(deleteId)
-    setDeleteModal(false)
-  };
   const showDeleteModal = (id) => {
     setDeleteId(id)
     setDeleteModal(true)
   };
   return (
+    <>
     <Box sx={{ width: '100%'}}>
       <DataGrid
       className='dataGrid'
@@ -143,7 +144,9 @@ export default function DataTable({rows, columns, onClickDelete}) {
         disableColumnResize
         disableColumnMenu
       />
-      {deleteModal && <DeleteDialog onAccept={handleDelete} setDeleteModal={setDeleteModal} deleteModal={deleteModal}/> }
     </Box>
+    {deleteModal && <DeleteDialog open={deleteModal} deleteId={deleteId} close={()=>setDeleteModal(false)}/> }
+      {rowToEdit !== null && <EditDialog rowToEdit={rowToEdit} open="true" close={()=>setRowToEdit(null)}/> }
+    </>
   );
 }

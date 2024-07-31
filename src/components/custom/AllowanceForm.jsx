@@ -82,8 +82,7 @@ function AllowanceForm() {
 
     if(!isPending && isError) {
       toast.error('Something went wrong. Please try again',{id:'error'})
-    } 
-
+    }
      
   return (
     <Form {...form}>

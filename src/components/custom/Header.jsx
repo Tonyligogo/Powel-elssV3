@@ -1,8 +1,8 @@
 import { useAuthContext } from "@/context/AuthProvider";
-import ProfilePic from "../../assets/profile.jpg";
 import {
   AlignJustify,
   ChevronRight,
+  CircleUserRound,
   LogIn,
   LogOut,
   Settings,
@@ -43,11 +43,15 @@ function Header() {
       </div>
       <div className="col-span-4 flex items-center justify-end ">
         <div className="flex items-center gap-3 rounded-full p-1 px-3 bg-[#ffece6] hover:bg-[#feccba]">
+          {avatar !== null ? 
           <img
-            src={avatar !== null ? avatar : ProfilePic}
+            src={ avatar} 
             alt="avatar"
             className=" size-8 border border-[#d74221] rounded-full "
           />
+          :
+          <CircleUserRound color="#d74221" /> 
+          }
           <Popover>
             <PopoverTrigger>
               <Settings size={20} color="#d74221" />

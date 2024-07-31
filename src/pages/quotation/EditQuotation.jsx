@@ -1,8 +1,11 @@
-import React from 'react'
+
 
 function EditQuotation() {
   return (
-    <div>EditQuotation</div>
+    <div>
+      <p>Edit quotation</p>
+      <p>Development in progress</p>
+    </div>
   )
 }
 

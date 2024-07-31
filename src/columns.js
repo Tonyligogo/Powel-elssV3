@@ -177,7 +177,6 @@ export const productColumn = [
   {
     field: 'name',
     headerName: 'Product name',
-    description: 'This column has a value getter and is not sortable.',
     width: 200,
   },
   {
@@ -198,3 +197,46 @@ export const productColumn = [
     width: 80,
   }
 ];
+
+export const allQuotationsColumn=[
+  {
+    field: 'quotation_no',
+    headerName: 'Quotation no.',
+    width: 150,
+  },
+  {
+    field: 'client_name',
+    headerName: 'Client Name',
+    width: 200,
+  },
+  {
+    field: 'client_email',
+    headerName: 'Email',
+    width: 200,
+  },
+  {
+    field: 'client_contact_number',
+    headerName: 'Phone no.',
+    width: 100,
+  },
+  {
+    field: 'client_address',
+    headerName: 'Location',
+    width: 200,
+  },
+  {
+    field: 'quotation_date',
+    headerName: 'Date',
+    width: 100,
+  },
+  {
+    field: 'quotation_due_date',
+    headerName: 'Due Date',
+    width: 100,
+  },
+  {
+    field: 'terms',
+    headerName: 'Terms',
+    width: 100,
+  },
+]
